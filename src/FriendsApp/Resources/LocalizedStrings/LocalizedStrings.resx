@@ -123,6 +123,9 @@
   <data name="AddFriendEntryPlaceholder" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="ChangeButtonStyleTextLabel" xml:space="preserve">
+    <value>Change style</value>
+  </data>
   <data name="FriendsListHeader" xml:space="preserve">
     <value>Friends</value>
   </data>

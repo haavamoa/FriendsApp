@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using FriendsApp.ViewModels;
 using Xamarin.Forms;
 
@@ -14,5 +15,22 @@ namespace FriendsApp.Views
             InitializeComponent();
             BindingContext = new MainViewModel();
         }
+
+        private void ChangeStyle(object sender, EventArgs e)
+        {
+            IsUsingLightButtonStyle = !IsUsingLightButtonStyle;
+
+            if (IsUsingLightButtonStyle)
+            {
+                Application.Current.Resources["ButtonStyle"] = Application.Current.Resources["LightButtonStyle"];
+            }
+            else
+            {
+                Application.Current.Resources["ButtonStyle"] = Application.Current.Resources["DarkButtonStyle"];
+            }
+
+        }
+
+        private bool IsUsingLightButtonStyle { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace FriendsApp
         protected override void OnStart()
         {
             // Handle when your app starts
+            Current.Resources["ButtonStyle"] = Current.Resources["DarkButtonStyle"];
         }
 
         protected override void OnSleep()

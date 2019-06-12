@@ -79,6 +79,15 @@ namespace FriendsApp.Resources.LocalizedStrings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change style.
+        /// </summary>
+        public static string ChangeButtonStyleTextLabel {
+            get {
+                return ResourceManager.GetString("ChangeButtonStyleTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friends.
         /// </summary>
         public static string FriendsListHeader {

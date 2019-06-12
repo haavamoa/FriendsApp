@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using FriendsApp.Resources.LocalizedStrings;
 using FriendsApp.ViewModels.Interfaces;
 using Xamarin.Forms;
 

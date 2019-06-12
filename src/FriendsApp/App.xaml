@@ -1,4 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0"
+      encoding="utf-8" ?>
+
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -6,6 +8,27 @@
              mc:Ignorable="d"
              x:Class="FriendsApp.App">
     <Application.Resources>
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="CornerRadius"
+                    Value="10" />
+        </Style>
+
+        <Style x:Key="LightButtonStyle"
+            TargetType="Button"
+            BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="BackgroundColor" Value="#c7c0d8"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="DarkButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="#6b5b95" />
+            <Setter Property="TextColor"
+                    Value="White" />
+        </Style>
 
     </Application.Resources>
 </Application>

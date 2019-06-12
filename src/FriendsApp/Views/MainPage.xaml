@@ -11,10 +11,11 @@
              xmlns:dblend="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="dblend"
              dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}">
-    <Grid>
+    <Grid Padding="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Grid to add friends -->
@@ -27,6 +28,7 @@
                    Placeholder="{x:Static LocalizedStrings:LocalizedStrings.AddFriendEntryPlaceholder}"
                    Text="{Binding NewFriendName}" />
             <Button Grid.Column="1"
+                    Style="{DynamicResource ButtonStyle}"
                     Text="{x:Static LocalizedStrings:LocalizedStrings.AddButtonTextLabel}"
                     Command="{Binding AddFriendCommand}" />
         </Grid>
@@ -49,13 +51,18 @@
                                    Text="{Binding Name}"
                                    VerticalOptions="Center" />
                             <Button Grid.Column="1"
+                                    Style="{DynamicResource ButtonStyle}"
                                     Command="{Binding RemoveFriendViewModel}"
-                                    Text="{x:Static LocalizedStrings:LocalizedStrings.RemoveFriendButtonTextLabel}"
-                            />
+                                    Text="{x:Static LocalizedStrings:LocalizedStrings.RemoveFriendButtonTextLabel}" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button Grid.Row="2"
+                Text="{x:Static LocalizedStrings:LocalizedStrings.ChangeButtonStyleTextLabel}"
+                Style="{DynamicResource ButtonStyle}"
+                Clicked="ChangeStyle"/>
     </Grid>
 </ContentPage>

@@ -123,6 +123,9 @@
   <data name="AddFriendEntryPlaceholder" xml:space="preserve">
     <value>Navn</value>
   </data>
+  <data name="ChangeButtonStyleTextLabel" xml:space="preserve">
+    <value>Endre stil</value>
+  </data>
   <data name="FriendsListHeader" xml:space="preserve">
     <value>Venner</value>
   </data>
