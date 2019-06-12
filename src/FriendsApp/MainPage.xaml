@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"
+      encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:FriendsApp.ViewModels;assembly=FriendsApp"
+             x:Class="FriendsApp.MainPage"
+             xmlns:dblend="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="dblend"
+             dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Grid to add friends -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Column="0"
+                   Placeholder="Name"
+                   Text="{Binding NewFriendName}" />
+            <Button Grid.Column="1"
+                    Text="Add"
+                    Command="{Binding AddFriendCommand}" />
+        </Grid>
+
+        <!-- Friends list-->
+        <ListView Grid.Row="1"
+                  Header="Friends"
+                  ItemsSource="{Binding Friends}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                   Margin="5"
+                                   Text="{Binding Name}"
+                                   VerticalOptions="Center" />
+                            <Button Grid.Column="1"
+                                    Command="{Binding RemoveFriendCommand}"
+                                    />
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
