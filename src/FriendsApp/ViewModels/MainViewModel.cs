@@ -2,15 +2,21 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using FriendsApp.Resources.LocalizedStrings;
+using FriendsApp.Services;
 using FriendsApp.ViewModels.Interfaces;
 using Xamarin.Forms;
 
 namespace FriendsApp.ViewModels
 {
-    public class MainViewModel : IHandleFriends
+    public class MainViewModel : IMainViewModel, IHandleFriends
     {
-        public MainViewModel()
+        private readonly IFriendService m_friendService;
+
+        public MainViewModel(IFriendService friendService)
         {
+            m_friendService = friendService;
+            var friends = m_friendService.GetFriends();
+
             AddFriendCommand = new Command(AddFriend);    
             Friends = new ObservableCollection<FriendViewModel>();
         }
