@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using FriendsApp.ViewModels.Interfaces;
 using Xamarin.Forms;
 
 namespace FriendsApp.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : IHandleFriends
     {
         public MainViewModel()
         {
@@ -18,7 +19,13 @@ namespace FriendsApp.ViewModels
 
         public void AddFriend()
         {
-            Friends.Add(new FriendViewModel(NewFriendName));
+            var friendViewModel = new FriendViewModel(NewFriendName, this);
+            Friends.Add(friendViewModel);
+        }
+
+        public void OnFriendRemoved(FriendViewModel friendViewModel)
+        {
+            Friends.Remove(friendViewModel);
         }
 
         public ObservableCollection<FriendViewModel> Friends { get; }

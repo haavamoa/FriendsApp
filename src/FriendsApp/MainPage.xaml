@@ -48,8 +48,9 @@
                                    Text="{Binding Name}"
                                    VerticalOptions="Center" />
                             <Button Grid.Column="1"
-                                    Command="{Binding RemoveFriendCommand}"
-                                    />
+                                    Command="{Binding RemoveFriendViewModel}"
+                                    Text="Remove"
+                            />
                         </Grid>
 
                     </ViewCell>
