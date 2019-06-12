@@ -21,8 +21,6 @@ namespace FriendsApp.ViewModels
 
         public void RemoveFriend()
         {
-            //How to communicate that we want to be deleted?
-            //Event? CallBack? Interface?
             m_friendsHandler.OnFriendRemoved(this);
             
         }

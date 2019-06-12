@@ -5,8 +5,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:LocalizedStrings="clr-namespace:FriendsApp.Resources.LocalizedStrings;assembly=FriendsApp"
              xmlns:ViewModels="clr-namespace:FriendsApp.ViewModels;assembly=FriendsApp"
-             x:Class="FriendsApp.MainPage"
+             x:Class="FriendsApp.Views.MainPage"
              xmlns:dblend="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="dblend"
              dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}">
@@ -23,16 +24,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Entry Grid.Column="0"
-                   Placeholder="Name"
+                   Placeholder="{x:Static LocalizedStrings:LocalizedStrings.AddFriendEntryPlaceholder}"
                    Text="{Binding NewFriendName}" />
             <Button Grid.Column="1"
-                    Text="Add"
+                    Text="{x:Static LocalizedStrings:LocalizedStrings.AddButtonTextLabel}"
                     Command="{Binding AddFriendCommand}" />
         </Grid>
 
         <!-- Friends list-->
         <ListView Grid.Row="1"
-                  Header="Friends"
+                  Header="{x:Static LocalizedStrings:LocalizedStrings.FriendsListHeader}"
                   ItemsSource="{Binding Friends}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -49,10 +50,9 @@
                                    VerticalOptions="Center" />
                             <Button Grid.Column="1"
                                     Command="{Binding RemoveFriendViewModel}"
-                                    Text="Remove"
+                                    Text="{x:Static LocalizedStrings:LocalizedStrings.RemoveFriendButtonTextLabel}"
                             />
                         </Grid>
-
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
