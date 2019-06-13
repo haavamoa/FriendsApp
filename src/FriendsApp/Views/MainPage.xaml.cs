@@ -10,10 +10,12 @@ namespace FriendsApp.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private IMainViewModel m_mainViewModel;
+
         public MainPage(IMainViewModel mainViewModel)
         {
             InitializeComponent();
-            BindingContext = mainViewModel;
+            BindingContext = m_mainViewModel = mainViewModel;
         }
 
         private void ChangeStyle(object sender, EventArgs e)
@@ -32,5 +34,10 @@ namespace FriendsApp.Views
         }
 
         private bool IsUsingLightButtonStyle { get; set; }
+
+        public async void OnStart()
+        {
+            await m_mainViewModel.Initialize();
+        }
     }
 }

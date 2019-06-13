@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace FriendsApp.ViewModels
@@ -8,5 +9,6 @@ namespace FriendsApp.ViewModels
         string NewFriendName { get; set; }
         ICommand AddFriendCommand { get; }
         ObservableCollection<FriendViewModel> Friends { get;  }
+        Task Initialize();
     }
 }

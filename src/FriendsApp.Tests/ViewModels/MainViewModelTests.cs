@@ -12,12 +12,15 @@ namespace FriendsApp.Tests.ViewModels
 {
     public class MainViewModelTests : TestBase
     {
+
         internal override void Configure(IServiceRegistry serviceRegistry)
         {
-            serviceRegistry.Register<IFriendService>(f => new Mock<IFriendService>().Object);
+            m_friendServiceMock = new Mock<IFriendService>();
+            serviceRegistry.Register(f => m_friendServiceMock.Object);
         }
 
         private readonly IMainViewModel m_mainViewModel;
+        private Mock<IFriendService> m_friendServiceMock;
 
         [Fact]
         public void AddFriend_NewFriendNameIsSet_FriendsHasItems()
@@ -38,7 +41,16 @@ namespace FriendsApp.Tests.ViewModels
             m_mainViewModel.Friends.First().RemoveFriendViewModel.Execute(null);
 
             Assert.Empty(m_mainViewModel.Friends);
+        }
 
+        [Fact]
+        public async void Initialize_ServiceHasFriends_FriendsGetsSet()
+        {
+            m_friendServiceMock.Setup(f => f.GetFriends()).ReturnsAsync(new List<string>() { "Carl" });
+
+            await m_mainViewModel.Initialize();
+
+            Assert.NotEmpty(m_mainViewModel.Friends);
         }
     }
 }

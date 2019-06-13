@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FriendsApp.Services
 {
     public interface IFriendService
     {
-        List<string> GetFriends();
+        Task<List<string>> GetFriends();
     }
 }

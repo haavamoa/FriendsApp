@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using FriendsApp.ViewModels;
 
 namespace FriendsApp.Services
 {
     public class FriendService : IFriendService
     {
-        public List<string> GetFriends()
+
+        public async Task<List<string>> GetFriends()
         {
             //Web requests, REST API
-            return new List<string>();
+            await Task.Delay(10000);
+            return new List<string>() { "Clara", "Sarah", "William" };
         }
     }
 }

@@ -10,7 +10,8 @@
              x:Class="FriendsApp.Views.MainPage"
              xmlns:dblend="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="dblend"
-             dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}">
+             dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}"
+             x:DataType="ViewModels:MainViewModel">
     <Grid Padding="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -30,15 +31,17 @@
             <Button Grid.Column="1"
                     Style="{DynamicResource ButtonStyle}"
                     Text="{x:Static LocalizedStrings:LocalizedStrings.AddButtonTextLabel}"
-                    Command="{Binding AddFriendCommand}" />
+                    Command="{Binding AddFriendCommand}" 
+                    />
         </Grid>
 
         <!-- Friends list-->
         <ListView Grid.Row="1"
                   Header="{x:Static LocalizedStrings:LocalizedStrings.FriendsListHeader}"
-                  ItemsSource="{Binding Friends}">
+                  ItemsSource="{Binding Friends}"
+                  SelectedItem="{Binding SelectedFriend, Mode=TwoWay}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="ViewModels:FriendViewModel">
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
