@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FriendsApp.Resources.LocalizedStrings;
@@ -17,6 +14,7 @@ namespace FriendsApp.ViewModels
         private readonly IFriendService m_friendService;
         private string m_newFriendName;
         private FriendViewModel m_selectedFriend;
+        private bool m_isBusy;
 
         public MainViewModel(IFriendService friendService)
         {
@@ -54,12 +52,14 @@ namespace FriendsApp.ViewModels
         public ObservableCollection<FriendViewModel> Friends { get; }
 
         public async Task Initialize()
-        {
+        {   
+            IsBusy = true;
             var friends = await m_friendService.GetFriends();
             foreach (var friend in friends)
             {
                 Friends.Add(new FriendViewModel(friend, this));
             }
+            IsBusy = false;
         }
 
         public FriendViewModel SelectedFriend
@@ -67,24 +67,11 @@ namespace FriendsApp.ViewModels
             get => m_selectedFriend;
             set => SetProperty(ref m_selectedFriend, value);
         }
-    }
 
-    public class BaseViewModel : INotifyPropertyChanged
-    {
-
-        public void SetProperty<T>(ref T backingField, T value, [CallerMemberName] string propertyName = null)
+        public bool IsBusy
         {
-            if (EqualityComparer<T>.Default.Equals(backingField, value))
-                return;
-            backingField = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => m_isBusy;
+            set => SetProperty(ref m_isBusy, value);
         }
     }
 }
