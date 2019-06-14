@@ -43,11 +43,11 @@
                   Header="{x:Static LocalizedStrings:LocalizedStrings.FriendsListHeader}"
                   ItemsSource="{Binding Friends}"
                   SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
-                  IsVisible="{Binding IsBusy, Converter={Converters:InvertedBoolConverter}}">
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="ViewModels:FriendViewModel">
                     <ViewCell>
-                        <Grid>
+                        <Grid BackgroundColor="{Binding ., Converter={Converters:FriendViewModelToColorConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
