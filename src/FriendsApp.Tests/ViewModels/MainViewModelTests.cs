@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FriendsApp.Services;
+using FriendsApp.Services.Http;
 using FriendsApp.ViewModels;
 using LightInject;
 using Moq;
@@ -15,12 +16,12 @@ namespace FriendsApp.Tests.ViewModels
 
         internal override void Configure(IServiceRegistry serviceRegistry)
         {
-            m_friendServiceMock = new Mock<IFriendService>();
-            serviceRegistry.Register(f => m_friendServiceMock.Object);
+            m_httpClientMock = new Mock<IHttpClient>();
+            serviceRegistry.Register(f => m_httpClientMock.Object);
         }
 
         private readonly IMainViewModel m_mainViewModel;
-        private Mock<IFriendService> m_friendServiceMock;
+        private Mock<IHttpClient> m_httpClientMock;
 
         [Fact]
         public void AddFriend_NewFriendNameIsSet_FriendsHasItems()
@@ -46,7 +47,7 @@ namespace FriendsApp.Tests.ViewModels
         [Fact]
         public async void Initialize_ServiceHasFriends_FriendsGetsSet()
         {
-            m_friendServiceMock.Setup(f => f.GetFriends()).ReturnsAsync(new List<string>() { "Carl" });
+            m_httpClientMock.Setup(s => s.GetAsync(It.IsAny<Uri>())).ReturnsAsync("[\"Carl\"]");
 
             await m_mainViewModel.Initialize();
 

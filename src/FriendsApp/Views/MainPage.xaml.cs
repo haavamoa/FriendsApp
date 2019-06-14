@@ -11,6 +11,7 @@ namespace FriendsApp.Views
     public partial class MainPage : ContentPage
     {
         private IMainViewModel m_mainViewModel;
+        private bool m_isUsingLightButtonStyle;
 
         public MainPage(IMainViewModel mainViewModel)
         {
@@ -20,9 +21,9 @@ namespace FriendsApp.Views
 
         private void ChangeStyle(object sender, EventArgs e)
         {
-            IsUsingLightButtonStyle = !IsUsingLightButtonStyle;
+            m_isUsingLightButtonStyle = !m_isUsingLightButtonStyle;
 
-            if (IsUsingLightButtonStyle)
+            if (m_isUsingLightButtonStyle)
             {
                 Application.Current.Resources["ButtonStyle"] = Application.Current.Resources["LightButtonStyle"];
             }
@@ -33,7 +34,6 @@ namespace FriendsApp.Views
 
         }
 
-        private bool IsUsingLightButtonStyle { get; set; }
 
         public async void OnStart()
         {
