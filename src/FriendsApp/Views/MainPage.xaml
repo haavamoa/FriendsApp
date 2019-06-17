@@ -13,6 +13,12 @@
              mc:Ignorable="dblend"
              dblend:DataContext="{dblend:DesignInstance ViewModels:MainViewModel}"
              x:DataType="ViewModels:MainViewModel">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,25,0,0" />
+
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <Grid Padding="5">
         <Grid.RowDefinitions>
@@ -30,10 +36,13 @@
             </Grid.ColumnDefinitions>
             <Entry Grid.Column="0"
                    Placeholder="{x:Static LocalizedStrings:LocalizedStrings.AddFriendEntryPlaceholder}"
-                   Text="{Binding NewFriendName}" />
+                   Text="{Binding NewFriendName}"
+                   />
             <Button Grid.Column="1"
                     Style="{DynamicResource ButtonStyle}"
                     Text="{x:Static LocalizedStrings:LocalizedStrings.AddButtonTextLabel}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand"
                     Command="{Binding AddFriendCommand}"
             />
         </Grid>

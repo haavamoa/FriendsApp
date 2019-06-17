@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsApp.Android", "Frien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsApp.iOS", "FriendsApp.iOS\FriendsApp.iOS.csproj", "{F048C2C4-D850-4810-B414-5C68C51E8D0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsApp.Tests", "FriendsApp.Tests\FriendsApp.Tests.csproj", "{A115F70D-17A7-4939-9155-E34731B6A3F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FriendsApp.Tests", "FriendsApp.Tests\FriendsApp.Tests.csproj", "{A115F70D-17A7-4939-9155-E34731B6A3F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,7 +51,7 @@ Global
 		{9E511935-590F-4E27-BC6F-6D9FC14F30A9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9E511935-590F-4E27-BC6F-6D9FC14F30A9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{9E511935-590F-4E27-BC6F-6D9FC14F30A9}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{F048C2C4-D850-4810-B414-5C68C51E8D0F}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{F048C2C4-D850-4810-B414-5C68C51E8D0F}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
 		{F048C2C4-D850-4810-B414-5C68C51E8D0F}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{F048C2C4-D850-4810-B414-5C68C51E8D0F}.Debug|iPhone.Build.0 = Debug|iPhone
 		{F048C2C4-D850-4810-B414-5C68C51E8D0F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator

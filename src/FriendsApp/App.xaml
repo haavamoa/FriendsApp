@@ -5,13 +5,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:System="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="FriendsApp.App">
     <Application.Resources>
         <Style x:Key="ButtonStyle"
                TargetType="Button">
-            <Setter Property="CornerRadius"
-                    Value="10" />
+            <Setter Property="CornerRadius">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="System:Int32">
+                        <On Platform="iOS" Value="5"/>
+                        <On Platform="Android" Value="10"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding">
+                <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="32,14,32,14"/>
+                </OnPlatform>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="LightButtonStyle"
